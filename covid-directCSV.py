@@ -34,6 +34,7 @@ def main():
 
     #Grab header from csv file and advance the iterator
     header = next(reader)
+    
 
     #Sort list
     sortedlist = sorted(reader, key=lambda row: row[4], reverse=False)
@@ -42,7 +43,10 @@ def main():
     #Refine the list of provinces
     for items in sortedlist:
         if items[3] == grab_time():
-            bc_sorted.append(items)
+            if items[0] == '99':
+                pass
+            else:
+                bc_sorted.append(items)
         else:
             pass
 
@@ -53,13 +57,18 @@ def main():
     print("-----------------------------")
     print('')
     
+    count = 1
+
     #Print all provences with total daily confirmed cases
     for x in bc_sorted:
-        
-        print(x[1] + ': ', end='')
+
+        print(str(count) + '. ' + x[1] + ': ', end='')
         print(x[4])
         print('')
-    
+        count = count+1
+
+    print("-----------------------------")
+
     #Closing maintenance
     file_in.close()
     os.remove('covid19.csv')
