@@ -69,11 +69,10 @@ def grab_data(driver):
         'North West territories',
         'Nunavut'
     ]
+
     for provinces, infected in zip(province_names, provinces):
        print(provinces + ': ' + infected)
        print()
-
-
 
 def main():
 
@@ -92,7 +91,6 @@ def main():
     driver = webdriver.Chrome(options=options)
     driver.get('https://ici.radio-canada.ca/info/2020/coronavirus-covid-19-pandemie-cas-carte-maladie-symptomes-propagation/')
     time.sleep(0.5)
-
 
     while True:
 
